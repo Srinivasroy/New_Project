@@ -1,0 +1,129 @@
+﻿@model New_Project.Models.masterEntities
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<aside>
+
+
+    @Html.DropDownList("name", new SelectList(ViewBag.Data, "name"), "Select DataBase", new { @class = "form-control", @onChange = "SelectedValue(this)" })
+    <div class="dropdown dropdown-tree" id="example"> </div>
+
+
+
+        <script>
+           
+
+        </script>
+</aside>
+
+<script>
+
+    function SelectedValue(ddlObject) {
+        var DatabaseName = ddlObject.value;
+        if (DatabaseName != "") {
+            $.ajax({
+                url: "Home/GetTableInfo",
+                data: { databaseName: DatabaseName },
+                type: "POST",
+                success: function (response) {
+                },
+
+            });
+        }
+
+    }
+    const data = [
+        {
+            title: "HTML5", href: "#1",
+            dataAttrs: [{ title: "dataattr1", data: "value1" }, { title: "dataattr2", data: "value2" }, { title: "dataattr3", data: "value3" }]
+        },
+        {
+            title: "JavaScript",
+            href: "#2",
+            dataAttrs: [{ title: "dataattr4", data: "value4" }, { title: "dataattr5", data: "value5" }, { title: "dataattr6", data: "value6" }],
+            data: subData
+        },
+        {
+            title: "CSS3",
+            href: "#3",
+            dataAttrs: [{ title: "dataattr7", data: "value7" }, { title: "dataattr8", data: "value8" }, { title: "dataattr9", data: "value9" }]
+        }
+    ];
+
+    var subData = [
+        {
+            title: "jQueryScript",
+            href: "#1",
+            dataAttrs: [{ title: "dataattr1", data: "value1" }, { title: "dataattr2", data: "value2" }, { title: "dataattr3", data: "value3" }]
+        },
+        {
+            title: "AngularJS",
+            href: "#2",
+            dataAttrs: [{ title: "dataattr4", data: "value4" }, { title: "dataattr5", data: "value5" }, { title: "dataattr6", data: "value6" }]
+        },
+        {
+            title: "ReactJS",
+            href: "#3",
+            dataAttrs: [{ title: "dataattr7", data: "value7" }, { title: "dataattr8", data: "value8" }, { title: "dataattr9", data: "value9" }]
+        }
+    ];
+
+
+    $("#example").DropDownTree({
+        data: data
+    });
+
+
+    $("#example").DropDownTree({
+
+        // dropdown title
+        title: "Dropdown",
+
+        // close/open icons
+        closedArrow: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+        openedArrow: '<i class="fa fa-caret-down" aria-hidden="true"></i>',
+
+        // max height of dropdown
+        maxHeight: 300,
+
+        // is multiple select?
+        multiSelect: false,
+
+        // checks all children of the selected parent
+        selectChildren: false,
+
+        // if the children are dynamic
+        addChildren: false,
+
+        // if is RTL(RIGHT TO LEFT)?
+        rtl: false
+
+    });
+
+    $("#example").DropDownTree({
+
+        clickHandler: function (target) { },
+        expandHandler: function (target, expanded) { },
+        checkHandler: function (target, checked) { },
+
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
