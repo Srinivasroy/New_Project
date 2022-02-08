@@ -5,22 +5,18 @@
 }
 
 
-<aside>
 
 
-    @Html.DropDownList("name", new SelectList(ViewBag.Data, "name"), "Select DataBase", new { @class = "form-control", @onChange = "SelectedValue(this)" })
-    <div class="dropdown dropdown-tree" id="example"> </div>
+@Html.DropDownList("name", new SelectList(ViewBag.Data, "name"), "Select DataBase", new { @class = "form-control", @onChange = "SelectedValue(this)" })
+
+
+<div class="dropdown dropdown-tree " id="example"> </div>
 
 
 
-        <script>
-           
 
-        </script>
-</aside>
 
 <script>
-
     function SelectedValue(ddlObject) {
         var DatabaseName = ddlObject.value;
         if (DatabaseName != "") {
@@ -80,7 +76,7 @@
     $("#example").DropDownTree({
 
         // dropdown title
-        title: "Dropdown",
+        title: "Menu",
 
         // close/open icons
         closedArrow: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
@@ -93,7 +89,7 @@
         multiSelect: false,
 
         // checks all children of the selected parent
-        selectChildren: false,
+        selectChildren: true    ,
 
         // if the children are dynamic
         addChildren: false,
@@ -103,27 +99,15 @@
 
     });
 
-    $("#example").DropDownTree({
+    //$("#example").DropDownTree({
 
-        clickHandler: function (target) { },
-        expandHandler: function (target, expanded) { },
-        checkHandler: function (target, checked) { },
+    //    clickHandler: function (target) { },
+    //    expandHandler: function (target, expanded) { },
+    //    checkHandler: function (target, checked) { },
 
-    });
+    //});
 
-</script>
 
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36251023-1']);
-    _gaq.push(['_setDomainName', 'jqueryscript.net']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
 
 </script>
+

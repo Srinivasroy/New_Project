@@ -4,17 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+
+
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Tree JQ/dropdowntree.css" rel="stylesheet" type="text/css">
+
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Tree JQ/dropdowntree.js"></script>
     <script src="~/Scripts/modernizr.js"></script>
 
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/fontawesome.min.css">
-    <script src="~/Scripts/jquery.min.js"></script>
-    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
 
-    <link href="~/Tree JQ/dropdowntree.css" rel="stylesheet">
-    <script src="~/Tree JQ/dropdowntree.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,10 +41,11 @@
 
     <div class="container body-content">
         @RenderBody()
-        
+
     </div>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
 </body>
 </html>
