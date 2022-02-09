@@ -10,7 +10,12 @@
 @Html.DropDownList("name", new SelectList(ViewBag.Data, "name"), "Select DataBase", new { @class = "form-control", @onChange = "SelectedValue(this)" })
 
 
-<div class="dropdown dropdown-tree " id="example"> </div>
+
+
+
+
+
+
 
 
 
@@ -31,81 +36,60 @@
         }
 
     }
-    const data = [
-        {
-            title: "HTML5", href: "#1",
-            dataAttrs: [{ title: "dataattr1", data: "value1" }, { title: "dataattr2", data: "value2" }, { title: "dataattr3", data: "value3" }]
-        },
-        {
-            title: "JavaScript",
-            href: "#2",
-            dataAttrs: [{ title: "dataattr4", data: "value4" }, { title: "dataattr5", data: "value5" }, { title: "dataattr6", data: "value6" }],
-            data: subData
-        },
-        {
-            title: "CSS3",
-            href: "#3",
-            dataAttrs: [{ title: "dataattr7", data: "value7" }, { title: "dataattr8", data: "value8" }, { title: "dataattr9", data: "value9" }]
-        }
-    ];
-
-    var subData = [
-        {
-            title: "jQueryScript",
-            href: "#1",
-            dataAttrs: [{ title: "dataattr1", data: "value1" }, { title: "dataattr2", data: "value2" }, { title: "dataattr3", data: "value3" }]
-        },
-        {
-            title: "AngularJS",
-            href: "#2",
-            dataAttrs: [{ title: "dataattr4", data: "value4" }, { title: "dataattr5", data: "value5" }, { title: "dataattr6", data: "value6" }]
-        },
-        {
-            title: "ReactJS",
-            href: "#3",
-            dataAttrs: [{ title: "dataattr7", data: "value7" }, { title: "dataattr8", data: "value8" }, { title: "dataattr9", data: "value9" }]
-        }
-    ];
 
 
-    $("#example").DropDownTree({
-        data: data
-    });
+    $(document).ready(function () {
+       
+
+    $("#btnGet").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Home/AjaxGetCall",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                if (response != null) {
+                    $(TableNames).val(response.TableName);
+
+                }
+            }
+              
+
+            });
 
 
-    $("#example").DropDownTree({
+    var treeObject = [{
+        text: "Table Name", 
+        checked: true,
+        id: 15,
+        otherDatas: "Other Datas",
+        children: [ 
+            { text: "Child 1" , checked: false },
+            { text: "Child 2" }
+        ]
+    }, {
+        text: "Table Name",
+        children: [
+            {
+                text: "Table Name",
+                children: [
+                    { text: "Child 3", checked: false },
+                    { text: "Child 4" }
+                ]
+            }
+        ]
+    }
+    ]
 
-        // dropdown title
-        title: "Menu",
-
-        // close/open icons
-        closedArrow: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
-        openedArrow: '<i class="fa fa-caret-down" aria-hidden="true"></i>',
-
-        // max height of dropdown
-        maxHeight: 300,
-
-        // is multiple select?
-        multiSelect: false,
-
-        // checks all children of the selected parent
-        selectChildren: true    ,
-
-        // if the children are dynamic
-        addChildren: false,
-
-        // if is RTL(RIGHT TO LEFT)?
-        rtl: false
+    var myTree = new TreeView(treeObject);
+    document.body.appendChild(myTree.root)
+        var myTree = new TreeView(treeObject, {
+               showAlwaysCheckBox: false,   
+         fold: true,
+        openAllFold: false    
 
     });
 
-    //$("#example").DropDownTree({
-
-    //    clickHandler: function (target) { },
-    //    expandHandler: function (target, expanded) { },
-    //    checkHandler: function (target, checked) { },
-
-    //});
 
 
 

@@ -55,7 +55,17 @@ namespace New_Project.Controllers
         }
 
 
+        [HttpGet]
+        public JsonResult AjaxGetCall(string TableName)
+        {
+            using (var context = new masterEntities())
+            {
 
+
+                var TableNames = @ViewBag.Data1;
+            };
+            return Json(TableName, JsonRequestBehavior.AllowGet);
+        }
 
 
 
